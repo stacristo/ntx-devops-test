@@ -19,7 +19,7 @@ Your task is to create a CI build pipeline that deploys this Node.js web applica
    - If working locally, implement an alternative method to trigger the pipeline.
 
 2. **Deployment Workflow**:  
-   - The CI pipeline should deploy the application to the target environment after a successful build.
+   - The CI pipeline should test and deploy the application to the target environment after a successful build.
 
 ---
 
@@ -43,12 +43,12 @@ The environment must meet the following specifications:
 
 You are free to use any tools and services to implement your solution. Feel free to tailor what you need Below are some options:
 
-- **CI Services**: GitHub Actions, Jenkins, GitLab CI/CD, CircleCI
-- **Provisioning Tools**: Terraform, Ansible, CloudFormation
-- **Local Environment**: Docker, Vagrant, Minikube
-- **Cloud Providers**: AWS, Azure, GCP
-- **Load Balancers**: NGINX, HAProxy, Cloud-native load balancers
-- **Version Control**: GitHub (fork this repository)
+- **CI Services**: GitHub Actions, Jenkins(prefered), GitLab CI/CD, CircleCI
+- **Provisioning Tools**(optional): Terraform, Ansible, CloudFormation
+- **Local Environment**: Docker , Docker swarm or Minikube
+- **Cloud Providers**: Free of choice, but u can use your local machine too
+- **Load Balancers**: NGINX, HAProxy, Cloud-native load balancers or Traefik
+- **Version Control**: GitHub (fork this repository) or Gitlab (re-push the repo)
 
 ---
 
@@ -69,7 +69,7 @@ You are free to use any tools and services to implement your solution. Feel free
 We will evaluate your submission based on the following:
 
 1. **Functionality**: Does the environment meet the requirements (load balancer, two app servers, correct response)?
-2. **Automation**: Is the infrastructure fully automated and deployable using IaC and CI/CD pipelines?
+2. **Automation**: Is the infrastructure fully automated and deployable using IaC and/or CI/CD pipelines?
 3. **Code Quality**: Is the code readable, modular, and maintainable?
 4. **DevOps Practices**: Does the solution adhere to DevOps principles such as scalability and fault tolerance?
 
@@ -96,6 +96,7 @@ This is a Node.js application. Use the following commands to run it locally:
   - How to deploy the environment.
   - Explanation of tools and services used.
   - Assumptions and challenges encountered during implementation.
+  - Recommendation of improvement can be implement on this Project
 - You are encouraged to showcase additional skills or optimizations (e.g., scaling, monitoring, or securing the application).
 
 Good luck, and happy coding! 🚀
