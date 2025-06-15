@@ -1,7 +1,7 @@
 pipeline {
     agent {dockerfile true}
 
-    tools {nodejs 'recent node'}
+    tools {nodejs 'latest nodejs'}
     
     stages {
         stage('Build') { 
