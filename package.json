@@ -10,7 +10,7 @@
   "author": "Sam Clement",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^5.1.2",
+    "chai": "^4.5.0",
     "mocha": "^10.8.2",
     "supertest": "^7.0.0",
     "tape": "^4.6.3"
