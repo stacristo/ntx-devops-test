@@ -71,7 +71,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
-      ImageId: ami-0a76dcfc18d9c5684
+      ImageId: ami-00543daa0ad4d3ea4
       SubnetId: !Ref PublicSubnet1
       SecurityGroupIds:
         - !Ref AppSecurityGroup
@@ -89,7 +89,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
-      ImageId: ami-0a76dcfc18d9c5684
+      ImageId: ami-00543daa0ad4d3ea4
       SubnetId: !Ref PublicSubnet2
       SecurityGroupIds:
         - !Ref AppSecurityGroup
