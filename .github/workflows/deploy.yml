@@ -1,7 +1,7 @@
-name: Deployment to EC2 Instance
+name: Deployment to Github Runners
 on: 
   workflow_run:
-    workflows: ["Build and Push Docker Image to Registry"]
+    workflows: ["Build and Push Docker Image to Docker Hub"]
     types: [completed]
 jobs:
   deploy:
