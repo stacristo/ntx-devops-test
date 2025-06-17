@@ -9,17 +9,17 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, privileged: true, inline: $install_common_tools
 
   config.vm.define :nginx do |nginx|
-    nginx.vm.box = "bento/ubuntu-20.04"
+    nginx.vm.box = "ubuntu/jammy64"
     nginx.vm.hostname = "master"
-    nginx.vm.network :private_network, ip: "192.168.74.60"
+    nginx.vm.network :private_network, ip: "192.168.56.0"
     nginx.vm.provision :shell, privileged: true, inline: $provision_nginx
   end
 
   %w{application1 application2}.each_with_index do |name, i|
     config.vm.define name do |application|
-      application.vm.box = "bento/ubuntu-20.04"
+      application.vm.box = "ubuntu/jammy64"
       application.vm.hostname = name
-      application.vm.network :private_network, ip: "192.168.74.#{i + 61}"
+      application.vm.network :private_network, ip: "192.168.56.#{i + 61}"
       application.vm.provision :shell, privileged: false, inline: $provision_docker
     end
   end
