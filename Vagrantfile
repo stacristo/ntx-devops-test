@@ -1,15 +1,15 @@
 Vagrant.configure("2") do |config|
-  config.vm.provider "virtualbox" do |virtualbox|
-    virtualbox.vmx["memsize"] = "4096"        # Memory (in MB)
-    virtualbox.vmx["numvcpus"] = "1"          # Number of CPU cores
-    virtualbox.vmx["ethernet0.connectionType"] = "nat" # Network type
-	  virtualbox.vmx["virtualHW.version"] = "7"
+  config.vm.provider "vmware_workstation" do |vmware|
+    vmware.vmx["memsize"] = "4096"        # Memory (in MB)
+    vmware.vmx["numvcpus"] = "1"          # Number of CPU cores
+    vmware.vmx["ethernet0.connectionType"] = "nat" # Network type
+	  vmware.vmx["virtualHW.version"] = "17"
   end
 
   config.vm.provision :shell, privileged: true, inline: $install_common_tools
 
   config.vm.define :nginx do |nginx|
-    nginx.vm.box = "ubuntu/jammy64"
+    nginx.vm.box = "bento/ubuntu-20.04"
     nginx.vm.hostname = "master"
     nginx.vm.network :private_network, ip: "192.168.74.60"
     nginx.vm.provision :shell, privileged: true, inline: $provision_nginx
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
   %w{application1 application2}.each_with_index do |name, i|
     config.vm.define name do |application|
-      application.vm.box = "ubuntu/jammy64"
+      application.vm.box = "bento/ubuntu-20.04"
       application.vm.hostname = name
       application.vm.network :private_network, ip: "192.168.74.#{i + 61}"
       application.vm.provision :shell, privileged: false, inline: $provision_docker
@@ -28,8 +28,8 @@ Vagrant.configure("2") do |config|
 end
 
 $install_common_tools = <<-SCRIPT
-apt -qq update
-apt -qq install -y docker.io apt-transport-https curl
+apt-get -qq update
+apt-get -qq install -y docker.io apt-transport-https curl
 usermod -aG docker vagrant
 SCRIPT
 
