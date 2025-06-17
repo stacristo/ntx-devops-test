@@ -1,4 +1,4 @@
-Vagrant.configure("2") do |config|
+Vagrant.configure(58") do |config|
   config.vm.provider "vmware_workstation" do |vmware|
     vmware.vmx["memsize"] = "4096"        # Memory (in MB)
     vmware.vmx["numvcpus"] = "1"          # Number of CPU cores
@@ -9,17 +9,17 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, privileged: true, inline: $install_common_tools
 
   config.vm.define :nginx do |nginx|
-    nginx.vm.box = "ubuntu/jammy64"
+    nginx.vm.box = "generic/ubuntu2004"
     nginx.vm.hostname = "master"
-    nginx.vm.network :private_network, ip: "192.168.56.0"
+    nginx.vm.network :private_network, ip: "192.168.58.0"
     nginx.vm.provision :shell, privileged: true, inline: $provision_nginx
   end
 
-  %w{application1 application2}.each_with_index do |name, i|
+  %w{applicationInstance1 applicationInstance2}.each_with_index do |name, i|
     config.vm.define name do |application|
-      application.vm.box = "ubuntu/jammy64"
+      application.vm.box = "generic/ubuntu2004"
       application.vm.hostname = name
-      application.vm.network :private_network, ip: "192.168.56.#{i + 61}"
+      application.vm.network :private_network, ip: "192.168.58.#{i + 61}"
       application.vm.provision :shell, privileged: false, inline: $provision_docker
     end
   end
@@ -48,8 +48,8 @@ apt-get install -y nginx
 systemctl start nginx
 cat <<EOL > /etc/nginx/conf.d/load_balancer.conf
 upstream backend_servers {
-    server 192.168.74.61:3000;
-    server 192.168.74.62:3000;
+    server 192.168.58.61:3000;
+    server 192.168.58.62:3000;
 }
 
 server {
