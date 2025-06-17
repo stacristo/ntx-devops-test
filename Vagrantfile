@@ -1,4 +1,4 @@
-Vagrant.configure(58") do |config|
+Vagrant.configure("2") do |config|
   config.vm.provider "vmware_workstation" do |vmware|
     vmware.vmx["memsize"] = "4096"        # Memory (in MB)
     vmware.vmx["numvcpus"] = "1"          # Number of CPU cores
