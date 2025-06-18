@@ -102,7 +102,7 @@ Before creating the solution, the following softwares are installed:
 4. Made sure that the status of each Github Runner status is in 'idle', this will change to 'running' when there are jobs given to each Runner.
 
 ### 5. Created Two Github Actions Workflow
-1. The first workflow is [push-docker-image.yml](.github/workflows/push-docker-image.yaml). This is a workflow run on the local machine to push a docker image to Docker Hub
+1. The first workflow is [push-docker-image.yml](.github/workflows/push-docker-image.yml). This is a workflow run on the local machine to push a docker image to Docker Hub
 2. The second workflow is [deploy.yml](.github/workflows/deploy.yml). This is to deploy the Node.js web applicaction to the created Github Actions Runners and run the web application in a docker image in each virtual machine.
 
 ### 6. Check Web Applications
