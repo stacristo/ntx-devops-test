@@ -83,23 +83,23 @@ Before creating the solution, the following softwares are installed:
 4. Run the command 'npm audit fix' to fix any vulnerabilities found due to reverting 'Chai'
    
 ### 2. Create and Provision Three Virtual mMchines with Vagrant
-1. Created the virtual machines Vagrant with the command 'vagrant up'. Vagrant will use the provided [Vagrantfile](Vagrantfile) in this repository and will automotically provision the virtual machines
-2. Checked the virtual machine status with the command 'vagrant status' to ensure the virtual machines have been created and are currently running
+1. Created the virtual machines Vagrant with the command ´vagrant up´. Vagrant will use the provided [Vagrantfile](Vagrantfile) in this repository and will automotically provision the virtual machines
+2. Checked the virtual machine status with the command ´vagrant status´ to ensure the virtual machines have been created and are currently running
 
 ### 3. Check NGINX Server Configurations After the Virtual Machines are Created and Provisioned
-1. SSH to the virtual machine named "nginx" with the command 'ssh nginx'
+1. SSH to the virtual machine named "nginx" with the command ´ssh nginx´
 2. Checked NGINX server configuration with the command:
-   '''
+   ´´´
    cat /etc/nginx/nginx.conf | grep "include /etc/nginx/sites-"
-   '''
-3. Checked the configuration of the load balancer by checking whether the file **load_balancer.conf** exists in the directory **/etc/nginx/conf.d/**, if not use **load_balancer.conf** provided in this repository
-4. Restarted the NGINX service, with the command 'sudo systemctl restart NGINX'
+   ´´´
+3. Checked the configuration of the load balancer by checking whether the file **load_balancer.conf** exists in the directory **/etc/nginx/conf.d/**, if not use [load_balancer.conf](load_balancer.conf) provided in this repository
+4. Restarted the NGINX service, with the command ´sudo systemctl restart nginx´
 
 ### 4. Create Two Github Actions Runners to Use as CI Pipeline
 1. SSH to each virtual machine created for each application instance.
 2. In the [Settings](https://github.com/stacristo/ntx-devops-test/settings) of this repository there is a section under "Actions" called [Runners](https://github.com/stacristo/ntx-devops-test/settings/actions/runners)
 3. Selected "New self-hosted runner" and followed the instructions given by Github for each self-hosted runner for each virtual machine.
-4. Made sure that the status of each Github Runner status is in 'idle', this will change to 'running' when there are jobs given to each Runner.
+4. Made sure that the status of each Github Runner status is in ´idle´, this will change to 'running' when there are jobs given to each Runner.
 
 ### 5. Created Two Github Actions Workflow
 1. The first workflow is [push-docker-image.yml](.github/workflows/push-docker-image.yml). This is a workflow run on the local machine to push a docker image to Docker Hub
@@ -108,10 +108,10 @@ Before creating the solution, the following softwares are installed:
 ### 6. Check Web Applications
 1. SSH to each virtual machine for the web application
 2. Checked whether [deploy.yml](.github/workflows/deploy.yml) successfuly deployed the docker image to each instance
-   '''
+   ´´´
    docker ps -a | grep ntx-devops-test
-   '''
-3. If the container is running, checked whether the application is also running by accessing the IP for the web application defined in the Vagrantfile. This will show the Node.js web application 'Hi there! I'm being served from {hostname}!'
+   ´´´
+3. If the container is running, checked whether the application is also running by accessing the IP for the web application defined in the Vagrantfile. This will show the Node.js web application ´Hi there! I'm being served from {hostname}!´
    ![screenshot of deployment result](assets/images/applicationInstances.png)
    
 ---
