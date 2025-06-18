@@ -103,7 +103,7 @@ Before creating the solution, the following softwares are installed:
 
 ### 5. Created Two Github Actions Workflow
 1. The first workflow is [push-dokcer-image.yml](.github/workflows/push-docker-image.yaml). This is a workflow run on the local machine to push a docker image to Docker Hub
-2. The second workflow is [deploy.yml](.github/workflows/deploy.yml). This is to deploy the Nodejs web applicaction to the created Github Actions Runners and run the web application in a docker image in each virtual machine.
+2. The second workflow is [deploy.yml](.github/workflows/deploy.yml). This is to deploy the Node.js web applicaction to the created Github Actions Runners and run the web application in a docker image in each virtual machine.
 
 ### 6. Check Web Applications
 1. SSH to each virtual machine for the web application
@@ -111,9 +111,11 @@ Before creating the solution, the following softwares are installed:
    '''
    docker ps -a | grep ntx-devops-test
    '''
-3. If the container is running, checked whether the application is also running by accessing the IP for the web application defined in the Vagrantfile. This will show the Nodejs web application 'Hi there! I'm being served from {hostname}!'
-
+3. If the container is running, checked whether the application is also running by accessing the IP for the web application defined in the Vagrantfile. This will show the Node.js web application 'Hi there! I'm being served from {hostname}!'
+   ![screenshot of deployment result](assets/images/applicationInstances.png)
+   
 ---
+
 ## Disclaimer
 1. Cloud deployment was attempted in Amazon Web Services (AWS), but changed to local deployment due to storage constraints for Jenkins
 2. Jenkins was not used for local deployment due to local machine storage constraints also
