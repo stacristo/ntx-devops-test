@@ -24,3 +24,6 @@ logs
 
 # Environment variables
 .env*
+
+# Vagrant virtual machine directory
+.vagrant

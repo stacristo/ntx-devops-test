@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.provider "vmware_workstation" do |vmware|
-    vmware.vmx["memsize"] = "4096"        # Memory (in MB)
+    vmware.vmx["memsize"] = "1024"        # Memory (in MB)
     vmware.vmx["numvcpus"] = "1"          # Number of CPU cores
     vmware.vmx["ethernet0.connectionType"] = "nat" # Network type
 	  vmware.vmx["virtualHW.version"] = "17"
@@ -36,11 +36,6 @@ SCRIPT
 $provision_docker = <<-SHELL
 sudo systemctl start docker
 sudo systemctl enable docker
-mkdir actions-runner && cd actions-runner
-curl -o actions-runner-linux-x64-2.320.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-linux-x64-2.320.0.tar.gz
-tar xzf ./actions-runner-linux-x64-2.320.0.tar.gz
-./config.sh --url https://github.com/imanyauma/ntx-devops-test --token AEE43AIMSLSA7KSZK45SS73HIQYSA
-./run.sh &
 SHELL
 
 $provision_nginx = <<-SHELL
