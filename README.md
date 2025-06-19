@@ -55,16 +55,17 @@ The tools used for this task are:
 ## Execution Plan
 The execution plan for this task are as below:
 1. Check the Node.js web application locally without any virtual machines to ensure that the application passes the required test.
-1. Create and provision three virtual machines with Vagrant, with the names:
+2. Create and provision three virtual machines with Vagrant, with the names:
    - NGINX: to serve as load balancer for the application servers
    - applicationInstance1: first virtual machine for Node.js web application
    - applicationInstance2: second virtual machine for Node.js web application
-2. Check NGINX server configurations after the virtual machines are created and provisoned
-3. Create two Github Actions runners to use as the CI pipeline for each virtual machine
-4. Created two Github Actions workflow:
+3. Check NGINX server configurations after the virtual machines are created and provisoned
+4. Create two Github Actions runners to use as the CI pipeline for each virtual machine
+5. Created two Github Actions workflow:
    - To push the docker image to Docker Hub
    - To deploy the application to each Runner in a docker image
-5. Check web applications
+6. Check web applications
+7. Save snapshot of virtual machines and suspend them
 
 ---
 
@@ -113,7 +114,11 @@ Before creating the solution, the following softwares are installed:
    ```
 3. If the container is running, checked whether the application is also running by accessing the IP for the web application defined in the Vagrantfile. This will show the Node.js web application `Hi there! I'm being served from {hostname}!`
    ![screenshot of deployment result](assets/images/applicationInstances.png)
-   
+
+### 7. Save Snapshot of Virtual Machines and Suspend Them
+1. Run the command `vagrant snasphot save devops-ntx-test` as a precaution to save the snapshot of the virtual machines
+2. Run the command `vagrant suspend [virtual-machine-name]` so that the virtual machines are suspended in state, so that the Github Runners in each virtual machines are saved
+ 
 ---
 
 ## Disclaimer
@@ -121,4 +126,5 @@ Before creating the solution, the following softwares are installed:
 2. Jenkins was not used for local deployment due to local machine storage constraints also
 3. Manual tasks that was done for this task:
   - Definining the IPs for the three virtual machines
-  - Creating the Github Actions Runner for each web application instance still needed to SSH to each server manually 
+  - Creating the Github Actions Runner for each web application instance still needed to SSH to each server manually
+  - Activating the Github Runners for each application after booting the virtual machines
